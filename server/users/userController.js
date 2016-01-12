@@ -76,6 +76,17 @@ module.exports = {
       });
     },
 
+  getOneUser: function (req, res) {
+    console.log(req.params);
+    User.findOne({username: req.params.username}, function(err, user) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(user);
+      }
+    });
+  },
+
   updateUser: function(req, res, next){
     //client changes the user information by putting in the original user name called searchName
     User.findOne({username: req.body.searchName}, function (err, user) {

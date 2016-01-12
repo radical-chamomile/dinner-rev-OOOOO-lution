@@ -11,15 +11,17 @@ module.exports = function (app, express) {
   app.post('/api/users/signin', userController.signin);
   app.post('/api/users/signup', userController.signup);
   app.put('/api/users/updateuser', userController.updateUser);
-  app.put('/api/meals/updatemeal', mealController.updateMeal);
+  app.get('/api/user/:username', userController.getOneUser);
+
   //for meals
+  app.put('/api/meals/updatemeal', mealController.updateMeal);
   app.put('/api/meals/meal', mealController.deleteMeal);
   app.get('/api/meals', mealController.allMeals);
   app.post('/api/meals', mealController.newMeal);
-  app.post('/api/meal', mealController.getOne);
+  app.get('/api/meal/:id', mealController.getOneMeal);
 
   //for other
-  app.get('/api/*', mealController.allMeals);
+  //app.get('/api/*', mealController.allMeals);
 
   // If a request is sent somewhere other than the routes above,
   // send it through our custom error handler
