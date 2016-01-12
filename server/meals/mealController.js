@@ -12,9 +12,9 @@ var findAllMeals = Q.nbind(Meal.find, Meal);
 
 //export module allMeals and newMeal
 module.exports = {
-  getOne: function (req, res) {
-    var id = req.body.id;
-    Meal.findOne({ _id: req.body.id }, function(err, meal) {
+  getOneMeal: function (req, res) {
+    console.log(req);
+    Meal.findOne({ _id: req.params.id}, function(err, meal) {
       if (err) {
         console.log(err);
       } else {
@@ -65,7 +65,6 @@ module.exports = {
 
   //delete a meal by id
   deleteMeal: function (req, res) {
-    var id = req.body.id;
     Meal.remove({ _id: req.body.id }, function(err) {
       if (err) {
         console.log(err);
